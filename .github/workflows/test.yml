@@ -1,0 +1,33 @@
+# Test with pytest
+
+name: Test
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+env:
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  DEFAULT_ADMIN_LOGIN: ${{ secrets.DEFAULT_ADMIN_LOGIN }}
+  DEFAULT_ADMIN_PASSWORD: ${{ secrets.DEFAULT_ADMIN_PASSWORD }}
+  POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+  POSTGRES_DATABASE_NAME: ${{ secrets.POSTGRES_DATABASE_NAME }}
+  
+jobs:
+  build:
+    name: Tests with pytest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Test
+        run: pytest

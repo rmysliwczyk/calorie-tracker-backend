@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.dependencies import create_db_and_tables
-from app.routers import auth, users
+from app.routers import auth, food, foodcollections, fooditems, meals, users
 
 load_dotenv()
 
@@ -30,3 +30,7 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(fooditems.router)
+app.include_router(foodcollections.router)
+app.include_router(food.router)
+app.include_router(meals.router)

@@ -44,7 +44,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d --name "calorie-tracker-backend" -p 8001:8001 "calorie-tracker-backend"'
+                sh 'docker run -d --name "calorie-tracker-backend" -p 8001:8001 "calorie-tracker-backend" --root-path "/api"'
             }
         }
     }

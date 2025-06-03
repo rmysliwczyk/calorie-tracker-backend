@@ -9,20 +9,14 @@ pipeline {
                         string(credentialsId: 'SECRET_KEY', variable: 'SECRET_KEY'),
                         string(credentialsId: 'DEFAULT_ADMIN_PASSWORD', variable: 'DEFAULT_ADMIN_PASSWORD'),
                         string(credentialsId: 'DEFAULT_ADMIN_LOGIN', variable: 'DEFAULT_ADMIN_LOGIN'),
-                        string(credentialsId: 'POSTGRES_USERNAME', variable: 'POSTGRES_USERNAME'),
-                        string(credentialsId: 'POSTGRES_PASSWORD', variable: 'POSTGRES_PASSWORD'),
-                        string(credentialsId: 'POSTGRES_HOST', variable: 'POSTGRES_HOST'),
-                        string(credentialsId: 'POSTGRES_DATABASE_NAME', variable: 'POSTGRES_DATABASE_NAME'),
+                        string(credentialsId: 'DATABASE_URL', variable: 'DATABASE_URL')
                     ]) {
                         sh """
                         rm .env || true
                         echo "SECRET_KEY=${SECRET_KEY}" >> .env
                         echo "DEFAULT_ADMIN_LOGIN=${DEFAULT_ADMIN_LOGIN}" >> .env
                         echo "DEFAULT_ADMIN_PASSWORD=${DEFAULT_ADMIN_PASSWORD}" >> .env
-                        echo "POSTGRES_USERNAME=${POSTGRES_USERNAME}" >> .env
-                        echo "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}" >> .env
-                        echo "POSTGRES_HOST=${POSTGRES_HOST}" >> .env
-                        echo "POSTGRES_DATABASE_NAME=${POSTGRES_DATABASE_NAME}" >> .env
+                        echo "DATABASE_URL=${DATABASE_URL}" >> .env
                         """
                     }
                 }
@@ -31,7 +25,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t "calorie-tracker-backend" .'
+                sh 'docker build -t \"calorie-tracker-backend\" .'
             }
         }
 
@@ -44,7 +38,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d --name "calorie-tracker-backend" -p 8001:8001 "calorie-tracker-backend" --root-path "/api"'
+                sh 'docker run -d --name \"calorie-tracker-backend\" -p 8001:8001 \"calorie-tracker-backend\" --root-path \"/api\"'
             }
         }
     }

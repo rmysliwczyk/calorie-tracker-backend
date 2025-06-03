@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t \\"calorie-tracker-backend\\" .'
+                sh 'docker build -t "calorie-tracker-backend" .'
             }
         }
 
@@ -44,7 +44,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d --name \\"calorie-tracker-backend\\" -p 8001:8001 \\"calorie-tracker-backend\\" --root-path \\"/api\\"'
+                sh 'docker run -d --name "calorie-tracker-backend" -p 8001:8001 "calorie-tracker-backend" --root-path "/api"'
             }
         }
     }

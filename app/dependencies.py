@@ -17,9 +17,14 @@ load_dotenv()
 
 ## Database
 
-DATABASE_URL = os.environ["DATABASE_URL"]
+POSTGRES_USERNAME = os.environ["POSTGRES_USERNAME"]
+POSTGRES_PASSWORD = os.environ["POSTGRES_PASSWORD"]
+POSTGRES_HOST = os.environ["POSTGRES_HOST"]
+POSTGRES_DATABASE_NAME = os.environ["POSTGRES_DATABASE_NAME"]
 
-engine = create_engine(DATABASE_URL, echo=True)
+POSTGRES_URL = f"postgresql://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}/{POSTGRES_DATABASE_NAME}"
+
+engine = create_engine(POSTGRES_URL, echo=True)
 
 
 def create_db_and_tables():

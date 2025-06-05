@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: d12f2b6360c2
-Revises: dd0eaa382d1e
-Create Date: 2025-06-05 23:57:38.123656
+Revision ID: 579ddfcc048b
+Revises:
+Create Date: 2025-06-06 00:09:21.424219
 
 """
 
@@ -13,8 +13,8 @@ import sqlmodel
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision: str = "d12f2b6360c2"
-down_revision: Union[str, None] = "dd0eaa382d1e"
+revision: str = "579ddfcc048b"
+down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

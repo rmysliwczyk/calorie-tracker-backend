@@ -46,6 +46,7 @@ def run_migrations_offline() -> None:
     url = os.environ["DATABASE_URL"]
     context.configure(
         url=url,
+        version_table_schema="public",
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},

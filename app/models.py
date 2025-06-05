@@ -39,7 +39,7 @@ class UserUpdate(SQLModel):
 
 
 class FoodItemBase(SQLModel):
-    name: str = Field(max_length=64)
+    name: str = Field(max_length=256)
     brand: Optional[str] = Field(default="", max_length=64)
     calories: Decimal = Field(default=0.0, ge=0, decimal_places=2)
     fats: Decimal = Field(default=0.0, ge=0, decimal_places=2)
@@ -117,7 +117,7 @@ class IngredientCreate(IngredientBase):
 
 
 class FoodCollectionBase(SQLModel):
-    name: str = Field(max_length=64)
+    name: str = Field(max_length=256)
     portion_weight: Optional[Decimal] = Field(default=None, ge=0, decimal_places=2)
 
 

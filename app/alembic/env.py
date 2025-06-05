@@ -1,14 +1,12 @@
+import os
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-from sqlmodel import SQLModel
-from app.models import User, Meal, FoodItem, FoodCollection, Ingredient
-
 from alembic import context
-
 from dotenv import load_dotenv
-import os
+from sqlalchemy import engine_from_config, pool
+from sqlmodel import SQLModel
+
+from app.models import FoodCollection, FoodItem, Ingredient, Meal, User
 
 load_dotenv()
 
@@ -51,6 +49,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        render_as_batch=True,
     )
 
     with context.begin_transaction():
@@ -67,14 +66,12 @@ def run_migrations_online() -> None:
     configuration = config.get_section(config.config_ini_section) or {}
     configuration["sqlalchemy.url"] = os.environ["DATABASE_URL"]
     connectable = engine_from_config(
-        configuration,
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
+        configuration, prefix="sqlalchemy.", poolclass=pool.NullPool
     )
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata, render_as_batch=True
         )
 
         with context.begin_transaction():

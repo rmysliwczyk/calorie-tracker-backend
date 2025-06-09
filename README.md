@@ -1,6 +1,16 @@
 # Calorie Tracker - backend
 This is a backend portion of my calorie tracker web app
 
+### Swagger UI
+<picture>
+    <img src="swagger.png" style="max-width: 500px; display: block; margin-right: auto;">
+</picture>
+
+### Local server - access it here: [ct.mysliwczykrafal.webredirect.org/api/docs](https://ct.mysliwczykrafal.webredirect.org/api/docs)
+<picture>
+    <img src="server.jpg" style="max-width: 500px; display: block; margin-right: auto;">
+</picture>
+
 ## General overview:
 This web application enables users to monitor their caloric intake by logging their daily meals. The main feature of the app is a database that users can update with their favorite food products. For each product, the database stores essential nutritional values per 100 grams, including calories, fats, carbohydrates, and proteins. Users can add their products and search for them using a responsive search function or by scanning product barcodes.
 

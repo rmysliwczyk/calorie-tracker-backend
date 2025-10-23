@@ -75,11 +75,6 @@ def create_meals(
     new_meals = []
     for meal in meals_in:
         new_meal = Meal.model_validate(meal, update={"creator_id": current_user.id})
-        if new_meal.food_collection_id and new_meal.food_item_id != None:
-            raise HTTPException(
-                status_code=400,
-                detail="Meal can include food item or food collection, not both.",
-            )
         session.add(new_meal)
         session.commit()
         session.refresh(new_meal)
@@ -98,11 +93,6 @@ def create_meal(
     session: SessionDep,
 ) -> MealPublic:
     new_meal = Meal.model_validate(meal_in, update={"creator_id": current_user.id})
-    if new_meal.food_collection_id and new_meal.food_item_id != None:
-        raise HTTPException(
-            status_code=400,
-            detail="Meal can include food item or food collection, not both.",
-        )
     session.add(new_meal)
     session.commit()
     session.refresh(new_meal)

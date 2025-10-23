@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy import engine_from_config, pool
 from sqlmodel import SQLModel
 
-from app.models import FoodCollection, FoodItem, Ingredient, Meal, User
+from app.models import FoodItem, Meal, User
 
 load_dotenv()
 

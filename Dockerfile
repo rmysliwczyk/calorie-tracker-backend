@@ -1,5 +1,6 @@
-FROM python:3-slim
+FROM python:3.13-slim-trixie
 
+RUN apt update && apt install -y postgresql postgresql-common-dev python3-dev
 WORKDIR /
 
 COPY app /app
@@ -7,6 +8,7 @@ COPY app /app
 COPY alembic.ini .
 COPY ".env" .
 COPY "requirements.txt" .
+RUN pip install setuptools --upgrade
 RUN pip install -r requirements.txt
 
 COPY "initialize_database.py" .

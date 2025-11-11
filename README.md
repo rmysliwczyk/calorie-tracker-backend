@@ -6,7 +6,7 @@ This is a backend portion of my calorie tracker web app
     <img src="swagger.png" style="max-width: 500px; display: block; margin-right: auto;">
 </picture>
 
-### Local server - access it here: [ct.mysliwczykrafal.webredirect.org/api/docs](https://ct.mysliwczykrafal.webredirect.org/api/docs)
+### Local server - access it here: [calorie-tracker-api.mysliwczykrafal.pl/api/docs](https://calorie-tracker-api.mysliwczykrafal.pl/api/docs)
 <picture>
     <img src="server.jpg" style="max-width: 500px; display: block; margin-right: auto;">
 </picture>
@@ -15,7 +15,7 @@ This is a backend portion of my calorie tracker web app
 This web application enables users to monitor their caloric intake by logging their daily meals. The main feature of the app is a database that users can update with their favorite food products. For each product, the database stores essential nutritional values per 100 grams, including calories, fats, carbohydrates, and proteins. Users can add their products and search for them using a responsive search function or by scanning product barcodes.
 
 ## Backend overview
-This backend server uses JWT tokens for authentication of the users. For all available endpoints and docs about the API please visit the swagger docs page [here](https://ct.mysliwczykrafal.webredirect.org/api/docs).  
+This backend server uses JWT tokens for authentication of the users. For all available endpoints and docs about the API please visit the swagger docs page [here](https://calorie-tracker-api.mysliwczykrafal.pl/api/docs).  
 I'm hosting this service on my local network using Nginx as a reverse proxy and Docker as a flexible tool for continous deployment. Deployment happens whenever new code is pushed to main branch and is triggered via a webhook pointing to my Jenkins service.  
 GitHub is then notified about success or failure during the build process. All of my .env contents are stored securely as secrets both on GitHub and in Jenkins.
 
